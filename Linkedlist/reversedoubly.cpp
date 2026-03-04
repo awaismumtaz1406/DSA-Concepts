@@ -15,58 +15,76 @@ public:
 	}
 };
 
-class doubly{
-	public:
-node *h;
-node *t;
-	public:
-doubly(){
-    h=t=nullptr;
-}
+class doubly
+{
+public:
+	node *h;
+	node *t;
 
-void insert(int d){
-node* nn=new node(d);
-if(h==NULL){
-	h=t=nn;
-}
-else{
-	nn->n=h;
-	h->pr=nn;
-	h=nn;
-}
+public:
+	doubly()
+	{
+		h = t = nullptr;
+	}
 
-}
+	void insert(int d)
+	{
+		node *nn = new node(d);
+		if (h == nullptr)
+		{
+			h = t = nn;
+		}
+		else
+		{
+			t->n = nn;
+			nn->pr = t;
+			t = nn;
+		}
+	}
 
-void reverse(){
-node * c=h;
-while(c!=nullptr)
-node *t=c->pr;
-c->pr=c->n;
-c->n=t;
-c=c->n;
-    }
+	void reverse()
+	{
+		node *c = h;
+		node *te=nullptr;
+		while (c != nullptr)
+			{ 
+		te = c->pr;
+		c->pr = c->n;
+		c->n = te;
+		c = c->pr;
+	       }
+		
+	}
 
+	void print()
+	{
+		node *te = h;
+		while (te != nullptr)
+		{
+			cout << te->d<<" ->";
+			te=te->n;
+		}
+	}
 };
 
-int main(){
+int main()
+{
 
 	doubly l;
-	int n,d;
-cout<<"enter nos of emlement";
-cin>>n;
-for(int i=0; i<n; i++){
-	cout<<"enter  element";
-	cin>>d;
-	l.insert(d);
+	int  d;
+	int arr[10]={11,22,33,44,55,66,77,88,99,100};
+	int s=sizeof(arr)/sizeof arr[0];
+	
+	for (int i = 0; i <s; i++)
+	{  d=arr[i];
+		l.insert(d);
+	}
+		l.print();
+	
+	
+		cout<<" after revserse applied:";
+	l.reverse();
+		l.print();
+
+	
 }
-}
-
-
-
-
-
-
-
-
-
-
