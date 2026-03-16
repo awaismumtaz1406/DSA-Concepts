@@ -8,7 +8,6 @@ class graph{
     int v;
     vector<list<int>>l;
   
-
 public:
 graph(int v){
     this->v=v;
@@ -19,6 +18,7 @@ void addedge(int u, int v){
  l[u].push_back(v);
   l[v].push_back(u);
 }
+
 
 void print(){
 for(int i=0; i<v; i++){
